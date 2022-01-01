@@ -4,76 +4,66 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Display;
-import android.view.Gravity;
-import android.view.ViewGroup;
-import android.widget.GridLayout;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.time.Month;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
+
     @RequiresApi(api = Build.VERSION_CODES.O)
-    @SuppressLint({"SetTextI18n", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
 
-        GridLayout gridCalendar = findViewById(R.id.gridCalendar);
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @SuppressLint({"NonConstantResourceId", "ResourceAsColor", "ResourceType"})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.button_tasks: {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment, TasksFragment.class, null)
+                        .commit();
 
-//        Date curDate = new Date();
-        Date curDate = new GregorianCalendar(2021, 9, 1).getTime();
-        Date beginDate = new GregorianCalendar(curDate.getYear() + 1900,
-                curDate.getMonth(), 1).getTime();
+                makeActiveButtonMenu("tasks");
+            } break;
+            case R.id.button_calendar: {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment, CalendarFragment.class, null)
+                        .commit();
 
-        int countDays = Month.of(curDate.getMonth() + 1).maxLength();
-        int countDaysLast = Month.of(curDate.getMonth()).maxLength();
-
-        int widthCell = getWindowManager().getDefaultDisplay().getWidth()/7;
-
-        String[] daysOfWeek = {"ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"};
-
-        for(String day: daysOfWeek) {
-            CellCalendar cell = new CellCalendar(this, day, 20, widthCell, R.color.black);
-            gridCalendar.addView(cell);
+                makeActiveButtonMenu("calendar");
+            } break;
         }
+    }
 
-        int curDay = 1;
-        int curDayNext = 1;
+    private void makeActiveButtonMenu(String button) {
+        switch (button) {
+            case "tasks": {
+                ImageView imageNonActive = findViewById(R.id.image_calendar_button);
+                imageNonActive.setColorFilter(getResources().getColor(R.color.menu_nonactive));
+                TextView textNonActive = findViewById(R.id.text_calendar_button);
+                textNonActive.setTextColor(getResources().getColor(R.color.menu_nonactive));
 
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 7; j++) {
-                CellCalendar cell;
-                if (i == 0) {
-                    if (j < beginDate.getDay() - 1) {
-                        cell = new CellCalendar(this,
-                                Integer.toString(countDaysLast - (beginDate.getDay() - 2) + j),
-                                20, widthCell, R.color.gray);
-                    } else {
-                        cell = new CellCalendar(this, Integer.toString(curDay), 20,
-                                widthCell, R.color.black);
-                        curDay++;
-                    }
-                } else {
-                    if (curDay <= countDays) {
-                        cell = new CellCalendar(this, Integer.toString(curDay), 20,
-                                widthCell, R.color.black);
-                        curDay++;
-                    } else {
-                        cell = new CellCalendar(this, Integer.toString(curDayNext),
-                                20, widthCell, R.color.gray);
-                        curDayNext++;
-                    }
-                }
-                gridCalendar.addView(cell);
+                ImageView image = findViewById(R.id.image_tasks_button);
+                image.setColorFilter(getResources().getColor(R.color.blue));
+                TextView text = findViewById(R.id.text_tasks_button);
+                text.setTextColor(getResources().getColor(R.color.blue));
+            } break;
+            case "calendar": {
+                ImageView imageNonActive = findViewById(R.id.image_tasks_button);
+                imageNonActive.setColorFilter(getResources().getColor(R.color.menu_nonactive));
+                TextView textNonActive = findViewById(R.id.text_tasks_button);
+                textNonActive.setTextColor(getResources().getColor(R.color.menu_nonactive));
+
+                ImageView image = findViewById(R.id.image_calendar_button);
+                image.setColorFilter(getResources().getColor(R.color.blue));
+                TextView text = findViewById(R.id.text_calendar_button);
+                text.setTextColor(getResources().getColor(R.color.blue));
             }
         }
     }

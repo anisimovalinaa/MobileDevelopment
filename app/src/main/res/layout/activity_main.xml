@@ -7,24 +7,85 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <GridLayout
-        android:id="@+id/gridCalendar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:columnCount="7"
-        tools:ignore="MissingConstraints">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/back_calendar">
 
-    </GridLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment"
+            android:name="com.example.todolist.TasksFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0pt"
+            android:layout_weight="9" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="172dp"
-        tools:layout_editor_absoluteY="411dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0pt"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:background="@drawable/shadow_menu">
 
+            <LinearLayout
+                android:id="@+id/button_tasks"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick">
 
+                <ImageView
+                    android:id="@+id/image_tasks_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/tasks_button"
+                    android:layout_gravity="center"
+                    app:tint="@color/blue" />
+
+                <TextView
+                    android:id="@+id/text_tasks_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"
+                    android:text="@string/tasks" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/button_calendar"
+                android:layout_width="0pt"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick"
+                tools:ignore="UsingOnClickInXml">
+
+                <ImageView
+                    android:id="@+id/image_calendar_button"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/calendar_button"
+                    app:tint="@color/menu_nonactive" />
+
+                <TextView
+                    android:id="@+id/text_calendar_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/menu_nonactive"
+                    android:text="@string/calendar" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

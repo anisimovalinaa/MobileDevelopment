@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ToDoList</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tasks">Задачи</string>
+    <string name="calendar">Календарь</string>
+    <string name="message_add_task">Введите здесь новую задачу</string>
+    <string name="label_today_tasks">Сегодня</string>
+    <string name="label_tasks_not_completed">Не завершенные</string>
+    <string name="label_tasks_completed">Завершенные</string>
 </resources>

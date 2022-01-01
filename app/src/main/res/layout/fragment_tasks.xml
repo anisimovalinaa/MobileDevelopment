@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".TasksFragment">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/tasks_today"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5pt">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:text="@string/label_today_tasks">
+
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/arrow_tasks_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/arrow_up" />
+            </LinearLayout>
+            <ListView
+                android:id="@+id/magic_tasks_today"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="5pt">
+
+            </ListView>
+
+
+            <LinearLayout
+                android:id="@+id/tasks_not_completed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5pt">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:text="@string/label_tasks_not_completed">
+
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/arrow_tasks_not_completed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/arrow_up" />
+
+            </LinearLayout>
+            <ListView
+                android:id="@+id/magic_tasks_not_completed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="5pt">
+
+            </ListView>
+
+            <LinearLayout
+                android:id="@+id/tasks_completed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5pt">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="17dp"
+                    android:textColor="@color/black"
+                    android:text="@string/label_tasks_completed">
+
+                </TextView>
+
+                <ImageView
+                    android:id="@+id/arrow_tasks_completed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/arrow_up" />
+
+            </LinearLayout>
+            <ListView
+                android:id="@+id/magic_tasks_completed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="5pt">
+
+            </ListView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/add_task_button"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                app:srcCompat="@drawable/plus"
+                app:tint="@color/white"
+                android:elevation="6dp"
+                android:stateListAnimator="@null"
+                android:translationZ="4dp"
+                android:focusable="true"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/plus_background"
+                android:layout_margin="20dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+</FrameLayout>

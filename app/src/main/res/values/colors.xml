@@ -5,7 +5,16 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#000000</color>
+    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="gray">#BD1B1B</color>
+    <color name="gray">#a0a9ae</color>
+    <color name="back_calendar">#ebf5fe</color>
+    <color name="cur_day">#5579ad</color>
+    <color name="blue">#4584ed</color>
+    <color name="menu_nonactive">#c9d0d6</color>
+    <color name="shadow">#CDCECF</color>
+    <color name="input_task">#fafafa</color>
+    <color name="button_add_task">#b1b1b1</color>
+    <color name="task_card">#f4f9fc</color>
+    <color name="tr">#2356585A</color>
 </resources>
